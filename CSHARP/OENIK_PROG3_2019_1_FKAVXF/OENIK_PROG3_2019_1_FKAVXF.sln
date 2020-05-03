@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLogiscool.Program", "MyLogiscool.Program\MyLogiscool.Program.csproj", "{BAA512F2-C3AC-4384-AF91-1E949F363059}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLogiscool.Data", "MyLogiscool.Data\MyLogiscool.Data.csproj", "{61C9CCF1-649B-4BAC-9622-0A77C8F58F47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLogiscool.Repository", "MyLogiscool.Repository\MyLogiscool.Repository.csproj", "{BB2F7D17-27B4-47F0-908E-10238310A63C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLogiscool.Logic", "MyLogiscool.Logic\MyLogiscool.Logic.csproj", "{8C63FF95-C3ED-4C77-ACB1-034854F36E82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLogiscool.Logic.Tests", "MyLogiscool.Logic.Tests\MyLogiscool.Logic.Tests.csproj", "{D577312A-088C-4D3C-9EF8-0CA2D29A3626}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogiData.Web", "LogiData.Web\LogiData.Web.csproj", "{DBFB578F-7617-4AE8-BD93-C6378A8BB0C4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAA512F2-C3AC-4384-AF91-1E949F363059}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAA512F2-C3AC-4384-AF91-1E949F363059}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAA512F2-C3AC-4384-AF91-1E949F363059}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAA512F2-C3AC-4384-AF91-1E949F363059}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61C9CCF1-649B-4BAC-9622-0A77C8F58F47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61C9CCF1-649B-4BAC-9622-0A77C8F58F47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61C9CCF1-649B-4BAC-9622-0A77C8F58F47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61C9CCF1-649B-4BAC-9622-0A77C8F58F47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB2F7D17-27B4-47F0-908E-10238310A63C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB2F7D17-27B4-47F0-908E-10238310A63C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB2F7D17-27B4-47F0-908E-10238310A63C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB2F7D17-27B4-47F0-908E-10238310A63C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C63FF95-C3ED-4C77-ACB1-034854F36E82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C63FF95-C3ED-4C77-ACB1-034854F36E82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C63FF95-C3ED-4C77-ACB1-034854F36E82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C63FF95-C3ED-4C77-ACB1-034854F36E82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D577312A-088C-4D3C-9EF8-0CA2D29A3626}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D577312A-088C-4D3C-9EF8-0CA2D29A3626}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D577312A-088C-4D3C-9EF8-0CA2D29A3626}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D577312A-088C-4D3C-9EF8-0CA2D29A3626}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBFB578F-7617-4AE8-BD93-C6378A8BB0C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBFB578F-7617-4AE8-BD93-C6378A8BB0C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBFB578F-7617-4AE8-BD93-C6378A8BB0C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBFB578F-7617-4AE8-BD93-C6378A8BB0C4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FB076DD6-66CB-4740-8125-EAA1B02EA034}
+	EndGlobalSection
+EndGlobal

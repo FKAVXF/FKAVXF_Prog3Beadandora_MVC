@@ -1,0 +1,13 @@
+﻿@model LogiData.Web.Models.OwnerViewModel
+
+@{
+    ViewBag.Title = "OwnerIndex";
+}
+
+<h2>Owners Index</h2>
+
+<p style:"color:red; font-weight: bold">@TempData["editResult"]</p>
+
+@Html.Partial("OwnerEdit", Model.EditedOwner)
+
+@Html.Partial("OwnerList", Model.OwnersList)

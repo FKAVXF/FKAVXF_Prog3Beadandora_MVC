@@ -1,0 +1,30 @@
+﻿@model LogiData.Web.Models.Owner
+
+<h2>Edit one owner</h2>
+
+@using (Html.BeginForm("Edit", "Owners"))
+{
+    @Html.ValidationSummary()
+
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m=>m.ID)
+    @Html.Hidden("editAction",ViewData["editAction"].ToString());
+
+    <div class="editor-label">@Html.LabelFor(m => m.Name)</div>
+    <div class="editor-field">@Html.EditorFor(m => m.Name)</div>
+
+    <div class="editor-label">@Html.LabelFor(m => m.City)</div>
+    <div class="editor-field">@Html.EditorFor(m => m.City)</div>
+
+    <div class="editor-label">@Html.LabelFor(m => m.StartYear)</div>
+    <div class="editor-field">@Html.EditorFor(m => m.StartYear)</div>
+
+    <div class="editor-label">@Html.LabelFor(m => m.HasPaidThisYear)</div>
+    <div class="editor-field">@Html.EditorFor(m => m.HasPaidThisYear)</div>
+
+    <div class="editor-label">@Html.LabelFor(m => m.IsReplaceable)</div>
+    <div class="editor-field">@Html.EditorFor(m => m.IsReplaceable)</div>
+
+    <input type="submit" value="SEND" />
+}

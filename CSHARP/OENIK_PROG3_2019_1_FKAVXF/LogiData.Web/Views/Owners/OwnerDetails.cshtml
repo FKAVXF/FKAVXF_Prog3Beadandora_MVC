@@ -1,0 +1,56 @@
+﻿@model LogiData.Web.Models.Owner
+@{
+    ViewBag.Title = "OwnerDetails";
+}
+
+<h2>Datasheet of one owner</h2>
+
+@Html.ActionLink("Back to the list", "Index");
+
+<table>
+    <tr>
+        <td>The ID of the owner</td>
+        <td>@Model.ID</td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(m => m.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(m => m.Name)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(m => m.City)
+        </td>
+        <td>
+            @Html.DisplayFor(m => m.City)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(m => m.StartYear)
+        </td>
+        <td>
+            @Html.DisplayFor(m => m.StartYear)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(m => m.HasPaidThisYear)
+        </td>
+        <td>
+            @Html.DisplayFor(m => m.HasPaidThisYear)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(m => m.IsReplaceable)
+        </td>
+        <td>
+            @Html.DisplayFor(m => m.IsReplaceable)
+        </td>
+    </tr>
+</table>
+

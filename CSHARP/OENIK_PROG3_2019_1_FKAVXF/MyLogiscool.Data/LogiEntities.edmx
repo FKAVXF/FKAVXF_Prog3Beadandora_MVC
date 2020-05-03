@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MyLogiscoolDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Owners">
+          <Key>
+            <PropertyRef Name="Owner_Id" />
+          </Key>
+          <Property Name="Owner_Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="StartYear" Type="int" />
+          <Property Name="HasPaidThisYear" Type="bit" />
+          <Property Name="IsReplaceable" Type="bit" />
+        </EntityType>
+        <EntityType Name="OwnerSchoolConnector">
+          <Key>
+            <PropertyRef Name="Connection_Id" />
+          </Key>
+          <Property Name="Connection_Id" Type="int" Nullable="false" />
+          <Property Name="Owner_Id" Type="int" Nullable="false" />
+          <Property Name="School_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Schools">
+          <Key>
+            <PropertyRef Name="School_Id" />
+          </Key>
+          <Property Name="School_Id" Type="int" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="ZipCode" Type="int" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="NumberOfChildren" Type="int" />
+        </EntityType>
+        <EntityType Name="Teachers">
+          <Key>
+            <PropertyRef Name="Teacher_Id" />
+          </Key>
+          <Property Name="Teacher_Id" Type="int" Nullable="false" />
+          <Property Name="School_Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Salary" Type="int" />
+          <Property Name="StartYear" Type="int" />
+          <Property Name="WellLiked" Type="bit" />
+          <Property Name="CourseNumber" Type="int" />
+          <Property Name="HealthCare" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="connectionOwner_foreign_key">
+          <End Role="Owners" Type="Self.Owners" Multiplicity="1" />
+          <End Role="OwnerSchoolConnector" Type="Self.OwnerSchoolConnector" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Owners">
+              <PropertyRef Name="Owner_Id" />
+            </Principal>
+            <Dependent Role="OwnerSchoolConnector">
+              <PropertyRef Name="Owner_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="connectionSchool_foreign_key">
+          <End Role="Schools" Type="Self.Schools" Multiplicity="1" />
+          <End Role="OwnerSchoolConnector" Type="Self.OwnerSchoolConnector" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schools">
+              <PropertyRef Name="School_Id" />
+            </Principal>
+            <Dependent Role="OwnerSchoolConnector">
+              <PropertyRef Name="School_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="teacher_foreign_key">
+          <End Role="Schools" Type="Self.Schools" Multiplicity="1" />
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schools">
+              <PropertyRef Name="School_Id" />
+            </Principal>
+            <Dependent Role="Teachers">
+              <PropertyRef Name="School_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MyLogiscoolDatabaseModelStoreContainer">
+          <EntitySet Name="Owners" EntityType="Self.Owners" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OwnerSchoolConnector" EntityType="Self.OwnerSchoolConnector" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schools" EntityType="Self.Schools" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="connectionOwner_foreign_key" Association="Self.connectionOwner_foreign_key">
+            <End Role="Owners" EntitySet="Owners" />
+            <End Role="OwnerSchoolConnector" EntitySet="OwnerSchoolConnector" />
+          </AssociationSet>
+          <AssociationSet Name="connectionSchool_foreign_key" Association="Self.connectionSchool_foreign_key">
+            <End Role="Schools" EntitySet="Schools" />
+            <End Role="OwnerSchoolConnector" EntitySet="OwnerSchoolConnector" />
+          </AssociationSet>
+          <AssociationSet Name="teacher_foreign_key" Association="Self.teacher_foreign_key">
+            <End Role="Schools" EntitySet="Schools" />
+            <End Role="Teachers" EntitySet="Teachers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MyLogiscoolDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Owners">
+          <Key>
+            <PropertyRef Name="Owner_Id" />
+          </Key>
+          <Property Name="Owner_Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StartYear" Type="Int32" />
+          <Property Name="HasPaidThisYear" Type="Boolean" />
+          <Property Name="IsReplaceable" Type="Boolean" />
+          <NavigationProperty Name="OwnerSchoolConnector" Relationship="Self.connectionOwner_foreign_key" FromRole="Owners" ToRole="OwnerSchoolConnector" />
+        </EntityType>
+        <EntityType Name="OwnerSchoolConnector">
+          <Key>
+            <PropertyRef Name="Connection_Id" />
+          </Key>
+          <Property Name="Connection_Id" Type="Int32" Nullable="false" />
+          <Property Name="Owner_Id" Type="Int32" Nullable="false" />
+          <Property Name="School_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Owners" Relationship="Self.connectionOwner_foreign_key" FromRole="OwnerSchoolConnector" ToRole="Owners" />
+          <NavigationProperty Name="Schools" Relationship="Self.connectionSchool_foreign_key" FromRole="OwnerSchoolConnector" ToRole="Schools" />
+        </EntityType>
+        <EntityType Name="Schools">
+          <Key>
+            <PropertyRef Name="School_Id" />
+          </Key>
+          <Property Name="School_Id" Type="Int32" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NumberOfChildren" Type="Int32" />
+          <NavigationProperty Name="OwnerSchoolConnector" Relationship="Self.connectionSchool_foreign_key" FromRole="Schools" ToRole="OwnerSchoolConnector" />
+          <NavigationProperty Name="Teachers" Relationship="Self.teacher_foreign_key" FromRole="Schools" ToRole="Teachers" />
+        </EntityType>
+        <EntityType Name="Teachers">
+          <Key>
+            <PropertyRef Name="Teacher_Id" />
+          </Key>
+          <Property Name="Teacher_Id" Type="Int32" Nullable="false" />
+          <Property Name="School_Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Salary" Type="Int32" />
+          <Property Name="StartYear" Type="Int32" />
+          <Property Name="WellLiked" Type="Boolean" />
+          <Property Name="CourseNumber" Type="Int32" />
+          <Property Name="HealthCare" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Schools" Relationship="Self.teacher_foreign_key" FromRole="Teachers" ToRole="Schools" />
+        </EntityType>
+        <Association Name="connectionOwner_foreign_key">
+          <End Role="Owners" Type="Self.Owners" Multiplicity="1" />
+          <End Role="OwnerSchoolConnector" Type="Self.OwnerSchoolConnector" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Owners">
+              <PropertyRef Name="Owner_Id" />
+            </Principal>
+            <Dependent Role="OwnerSchoolConnector">
+              <PropertyRef Name="Owner_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="connectionSchool_foreign_key">
+          <End Role="Schools" Type="Self.Schools" Multiplicity="1" />
+          <End Role="OwnerSchoolConnector" Type="Self.OwnerSchoolConnector" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schools">
+              <PropertyRef Name="School_Id" />
+            </Principal>
+            <Dependent Role="OwnerSchoolConnector">
+              <PropertyRef Name="School_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="teacher_foreign_key">
+          <End Role="Schools" Type="Self.Schools" Multiplicity="1" />
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schools">
+              <PropertyRef Name="School_Id" />
+            </Principal>
+            <Dependent Role="Teachers">
+              <PropertyRef Name="School_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MyLogiscoolDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Owners" EntityType="Self.Owners" />
+          <EntitySet Name="OwnerSchoolConnector" EntityType="Self.OwnerSchoolConnector" />
+          <EntitySet Name="Schools" EntityType="Self.Schools" />
+          <EntitySet Name="Teachers" EntityType="Self.Teachers" />
+          <AssociationSet Name="connectionOwner_foreign_key" Association="Self.connectionOwner_foreign_key">
+            <End Role="Owners" EntitySet="Owners" />
+            <End Role="OwnerSchoolConnector" EntitySet="OwnerSchoolConnector" />
+          </AssociationSet>
+          <AssociationSet Name="connectionSchool_foreign_key" Association="Self.connectionSchool_foreign_key">
+            <End Role="Schools" EntitySet="Schools" />
+            <End Role="OwnerSchoolConnector" EntitySet="OwnerSchoolConnector" />
+          </AssociationSet>
+          <AssociationSet Name="teacher_foreign_key" Association="Self.teacher_foreign_key">
+            <End Role="Schools" EntitySet="Schools" />
+            <End Role="Teachers" EntitySet="Teachers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MyLogiscoolDatabaseModelStoreContainer" CdmEntityContainer="MyLogiscoolDatabaseEntities">
+          <EntitySetMapping Name="Owners">
+            <EntityTypeMapping TypeName="MyLogiscoolDatabaseModel.Owners">
+              <MappingFragment StoreEntitySet="Owners">
+                <ScalarProperty Name="Owner_Id" ColumnName="Owner_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="StartYear" ColumnName="StartYear" />
+                <ScalarProperty Name="HasPaidThisYear" ColumnName="HasPaidThisYear" />
+                <ScalarProperty Name="IsReplaceable" ColumnName="IsReplaceable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OwnerSchoolConnector">
+            <EntityTypeMapping TypeName="MyLogiscoolDatabaseModel.OwnerSchoolConnector">
+              <MappingFragment StoreEntitySet="OwnerSchoolConnector">
+                <ScalarProperty Name="Connection_Id" ColumnName="Connection_Id" />
+                <ScalarProperty Name="Owner_Id" ColumnName="Owner_Id" />
+                <ScalarProperty Name="School_Id" ColumnName="School_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schools">
+            <EntityTypeMapping TypeName="MyLogiscoolDatabaseModel.Schools">
+              <MappingFragment StoreEntitySet="Schools">
+                <ScalarProperty Name="School_Id" ColumnName="School_Id" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="NumberOfChildren" ColumnName="NumberOfChildren" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teachers">
+            <EntityTypeMapping TypeName="MyLogiscoolDatabaseModel.Teachers">
+              <MappingFragment StoreEntitySet="Teachers">
+                <ScalarProperty Name="Teacher_Id" ColumnName="Teacher_Id" />
+                <ScalarProperty Name="School_Id" ColumnName="School_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="StartYear" ColumnName="StartYear" />
+                <ScalarProperty Name="WellLiked" ColumnName="WellLiked" />
+                <ScalarProperty Name="CourseNumber" ColumnName="CourseNumber" />
+                <ScalarProperty Name="HealthCare" ColumnName="HealthCare" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3e9d47f5f0234f6e81220f1e36b5b71b" Name="Diagram1">
+        <EntityTypeShape EntityType="MyLogiscoolDatabaseModel.Owners" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyLogiscoolDatabaseModel.OwnerSchoolConnector" Width="1.5" PointX="4.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyLogiscoolDatabaseModel.Schools" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyLogiscoolDatabaseModel.Teachers" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="MyLogiscoolDatabaseModel.connectionOwner_foreign_key" ManuallyRouted="false" />
+        <AssociationConnector Association="MyLogiscoolDatabaseModel.connectionSchool_foreign_key" ManuallyRouted="false" />
+        <AssociationConnector Association="MyLogiscoolDatabaseModel.teacher_foreign_key" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
